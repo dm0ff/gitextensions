@@ -201,5 +201,16 @@ YYYY/MM/DD, github id, Full name, email
 2023/08/30, SlugFiller, Saar Korren, slugfiller(at)gmail.com
 2023/07/16, e-stadnik, Evgeny Stadnik ev.stadnik(at)outlook.com
 2023/10/20, dmitrybozhenok, Dmitry Bozhenok, dmitry.bozhenok(at)gmail.com
+2023/11/30, bdukes, Brian Dukes, bdukes(at)engagesoftware.com
 2023/11/30, snelltheta, Steve Samons, snelltheta(at)gmail.com
 2023/12/01, pmgiant, Pawel Marchewka, ppmmggiiaanntt(at)gmail.com
+2024/01/01, qgppl, Grzegorz Pachocki, g.pachocki(at)wp.pl
+2024/02/21, superhoang, Aymeric Nguyen, aymeric.nguyen(at)gmail.com
+2024/03/14, rstm-sf, Rustam rstm.sf(at)gmail.com
+2024/03/24, berrs, Per-Erik Stendahl, pererik.stendahl@gmail.com
+2024/05/27, redcatH, Yi Liu, i.hao.lin[at}outlook.com
+2024/06/17, astos-marcb, Marc Becker, marc.becker@astos.de
+2024/09/12, ericstj, Eric StJohn, ericstj(at)microsoft.com
+2024/09/26, georg138, Georg Siebke, github(at)georgsiebke.de
+2024/10/21, chkoddi,Chandar,chkoddi@live.com
+2024/11/05, anhtrvn, Anh Tran, anhtran18202(at)gmail.com

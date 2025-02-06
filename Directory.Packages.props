@@ -14,6 +14,7 @@
     <PackageVersion Include="LibGit2Sharp" Version="0.27.2" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
     <PackageVersion Include="Microsoft.Toolkit.HighPerformance" Version="7.1.2" />
+    <PackageVersion Include="StrongOf" Version="1.2.4" />
     <PackageVersion Include="System.ComponentModel.Composition" Version="6.0.0" /> <!-- Required by GitExtensions.PluginManager -->
     <PackageVersion Include="Microsoft.VisualStudio.Composition" Version="17.2.41" />
     <PackageVersion Include="Microsoft.VisualStudio.Threading" Version="17.4.27" />
@@ -23,7 +24,7 @@
     <PackageVersion Include="NString" Version="2.1.1" />
     <PackageVersion Include="RestSharp" Version="106.12.0" />
     <PackageVersion Include="SmartFormat" Version="3.0.0" />
-    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
     <PackageVersion Include="System.Collections.Immutable" Version="6.0.0" /> <!-- Required by GitExtensions.Plugins.AutoCompileSubmodules -->
     <PackageVersion Include="System.IO.Abstractions" Version="19.2.18" />
     <PackageVersion Include="System.Reactive" Version="5.0.0" />
@@ -37,18 +38,19 @@
 
     <!-- Setup infra -->
     <PackageVersion Include="vswhere" Version="2.8.4" />
-    <PackageVersion Include="WiX" Version="3.11.2" />
+    <PackageVersion Include="WiX" Version="3.14.1" />
 
     <!-- Test infra -->
     <PackageVersion Include="Appveyor.TestLogger" Version="2.0.0" />
-    <PackageVersion Include="FluentAssertions" Version="5.10.3" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.0.0" /> <!-- Required? -->
+    <PackageVersion Include="FluentAssertions" Version="6.12.1" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.0.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.0.0" /> <!-- Required? -->
     <PackageVersion Include="NSubstitute" Version="4.2.1" />
     <PackageVersion Include="NUnit.ConsoleRunner" Version="3.16.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageVersion Include="System.IO.Abstractions.TestingHelpers" Version="19.2.18" />
+    <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" /> <!-- CVE-2019-0820, see https://github.com/advisories/GHSA-cmhx-cq75-c4mj -->
     <PackageVersion Include="Verify.NUnit" Version="20.3.0" />
     <PackageVersion Include="YamlDotNet" Version="11.2.1" />
 
