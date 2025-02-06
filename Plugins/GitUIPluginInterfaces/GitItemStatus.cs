@@ -310,5 +310,8 @@ namespace GitUIPluginInterfaces
 
             return str.ToString();
         }
+
+        public bool HasDebugComments { get; set; }
+        public bool IsInIgnoredList { get; set; }
     }
 }

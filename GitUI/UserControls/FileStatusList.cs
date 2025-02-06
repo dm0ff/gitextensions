@@ -1081,6 +1081,8 @@ namespace GitUI
                         listItem.Selected = true;
                     }
 
+                    CalcCustomFlags(item);
+
                     listItem.Tag = new FileStatusItem(i.FirstRev, i.SecondRev, item, i.BaseA, i.BaseB);
                     list.Add(listItem);
                 }
@@ -1101,6 +1103,23 @@ namespace GitUI
             FileStatusListView.EndUpdate();
             UpdateColumnWidth();
             return;
+
+            void CalcCustomFlags(GitItemStatus item)
+            {
+                if (item.IsSubmodule || !(item.IsUncommitted || item.IsUncommittedAdded))
+                    return;
+
+                var fileName = _fullPathResolver.Resolve(item.Name)?.NormalizePath();
+                Validates.NotNull(fileName);
+                if (!File.Exists(fileName))
+                    return;
+
+                using var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var reader = new StreamReader(stream, Module.FilesEncoding);
+                var content = reader.ReadToEnd();
+
+                item.HasDebugComments = content.Contains("////");
+            }
 
             void EnsureSelectedIndexChangeSubscription()
             {
@@ -1520,6 +1539,10 @@ namespace GitUI
                     Size prefixSize = formatter.MeasureString(prefix);
                     textRect.Offset(prefixSize.Width, 0);
                 }
+
+                var gitItemStatus = item.Tag<FileStatusItem>().Item;
+                if (gitItemStatus.HasDebugComments)
+                    textColor = Color.Red;
 
                 DrawString(textRect, text, textColor);
 

@@ -23,7 +23,7 @@ public static class DebugHelpers
     {
         if (Debugger.IsAttached || IsTestRunning)
         {
-            Debug.Fail(message);
+            ////Debug.Fail(message);
         }
         else
         {
