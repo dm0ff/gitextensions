@@ -199,6 +199,9 @@ public sealed class GitItemStatus
         set => SetFlag(value, Flags.IsRangeDiff);
     }
 
+    public bool HasDebugComments { get; set; }
+    public bool IsInIgnoredList { get; set; }
+
     private bool HasFlag(Flags flags)
     {
         // NOTE Enum.HasFlag boxes its argument

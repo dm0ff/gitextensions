@@ -1113,7 +1113,7 @@ namespace GitUI
 
         private record struct TreeNodeInfo(TreeNode Node, ExpandCollapseState State);
 
-        private static (List<TreeNodeInfo> Nodes, HashSet<TreeNode> ToBeSelectedItems, bool ShowDiffGroups, bool FilesPresent) GetNodes(
+        private (List<TreeNodeInfo> Nodes, HashSet<TreeNode> ToBeSelectedItems, bool ShowDiffGroups, bool FilesPresent) GetNodes(
             IReadOnlyList<FileStatusWithDescription> items,
             HashSet<GitItemStatus>? previouslySelectedItems,
             bool groupByRevision,
@@ -1268,9 +1268,27 @@ namespace GitUI
                     toBeSelectedItems.Add(listItem);
                 }
 
+                CalcCustomFlags(item);
                 listItem.Tag = new FileStatusItem(fileStatusWithDescription.FirstRev, fileStatusWithDescription.SecondRev, item, fileStatusWithDescription.BaseA, fileStatusWithDescription.BaseB);
 
                 return listItem;
+
+                void CalcCustomFlags(GitItemStatus item)
+                {
+                    if (item.IsSubmodule || !(item.IsUncommitted || item.IsUncommittedAdded))
+                        return;
+
+                    var fileName = _fullPathResolver.Resolve(item.Name)?.NormalizePath();
+                    Validates.NotNull(fileName);
+                    if (!File.Exists(fileName))
+                        return;
+
+                    using var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using var reader = new StreamReader(stream, Module.FilesEncoding);
+                    var content = reader.ReadToEnd();
+
+                    item.HasDebugComments = content.Contains("////");
+                }
             }
 
             static string GetGroupName(FileStatusWithDescription i, int shownCount)
@@ -1620,6 +1638,13 @@ namespace GitUI
                 DrawString(textRect, prefix, grayTextColor);
                 Size prefixSize = formatter.MeasureString(prefix);
                 textRect.Offset(prefixSize.Width, 0);
+            }
+
+            if (item.Tag is FileStatusItem)
+            {
+                var gitItemStatus = ((FileStatusItem)item.Tag).Item;
+                if (gitItemStatus.HasDebugComments)
+                    textColor = Color.Red;
             }
 
             DrawString(textRect, text, textColor);
